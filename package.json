@@ -21,11 +21,8 @@
     "url": "git+https://github.com/LiDline/yclients-slots-monitor.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "LiDline",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/LiDline/yclients-slots-monitor/issues"
-  },
   "homepage": "https://github.com/LiDline/yclients-slots-monitor#readme",
   "dependencies": {
     "cron": "^4.4.0",
