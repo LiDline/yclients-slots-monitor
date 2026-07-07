@@ -18,23 +18,20 @@ export function ServiceSelectionUrlStep({
           открывать онлайн-запись и получать доступные услуги для мониторинга.
         </p>
       </div>
-      <label className="form-control">
-        <span className="label">
-          <span className="label-text">Ссылка на страницу выбора сервиса YCLIENTS</span>
-        </span>
-        <input
-          className={`input input-bordered ${serviceSelectionUrlError === '' ? '' : 'input-error'}`}
-          onChange={(changeEvent) => {
-            onServiceSelectionUrlChange(changeEvent.target.value);
-          }}
-          placeholder="https://yclients.com/booking/..."
-          type="url"
-          value={serviceSelectionUrl}
-        />
-        {serviceSelectionUrlError === '' ? null : (
-          <span className="mt-2 text-sm text-error">{serviceSelectionUrlError}</span>
-        )}
-      </label>
+
+      <input
+        className={`input input-bordered w-full ${serviceSelectionUrlError === '' ? '' : 'input-error'}`}
+        onChange={(changeEvent) => {
+          onServiceSelectionUrlChange(changeEvent.target.value);
+        }}
+        placeholder="https://n1416692.yclients.com/company/..."
+        type="url"
+        value={serviceSelectionUrl}
+      />
+      {serviceSelectionUrlError === '' ? null : (
+        <span className="mt-2 text-sm text-error">{serviceSelectionUrlError}</span>
+      )}
+
       <button
         className="btn btn-primary justify-self-start"
         onClick={onNextStepButtonClick}
