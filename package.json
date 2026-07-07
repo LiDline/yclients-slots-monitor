@@ -1,16 +1,23 @@
 {
   "name": "yclients-slots-monitor",
   "version": "1.0.0",
+  "private": true,
   "description": "Отслеживание свободных записей в YCLIENTS с уведомлениями об этом в Telegram.",
   "type": "module",
   "main": "dist/index.js",
+  "workspaces": [
+    "apps/*"
+  ],
   "engines": {
     "node": ">=22"
   },
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "start": "node dist/index.js",
-    "build": "tsc -p tsconfig.json",
+    "dev:frontend": "npm run dev --workspace @yclients-slots-monitor/frontend",
+    "start": "concurrently \"npm run dev\" \"npm run dev:frontend\"",
+    "build": "npm run build:backend && npm run build:frontend",
+    "build:backend": "tsc -p tsconfig.json",
+    "build:frontend": "npm run build --workspace @yclients-slots-monitor/frontend",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "format": "prettier --write .",
@@ -37,6 +44,7 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/node": "^26.1.0",
+    "concurrently": "^10.0.3",
     "eslint": "^10.6.0",
     "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.9.4",

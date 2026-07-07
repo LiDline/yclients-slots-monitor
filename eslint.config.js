@@ -5,7 +5,7 @@ import tseslint from 'typescript-eslint';
 
 export default defineConfig(
   {
-    ignores: ['dist/**', 'node_modules/**', '*.log'],
+    ignores: ['dist/**', '**/dist/**', 'node_modules/**', '*.log'],
   },
   js.configs.recommended,
   ...tseslint.configs.strictTypeChecked,

@@ -11,6 +11,9 @@
 
 - Node.js 22+
 - TypeScript, ESM
+- React
+- Vite
+- Tailwind CSS, daisyUI
 - Playwright
 - Telegraf
 - dotenv, Joi
@@ -22,6 +25,8 @@
 ## Структура
 
 ```text
+apps/
+  frontend/    React-интерфейс настроек мониторинга
 src/
   config/      загрузка и валидация конфигурации из .env
   logger/      настройка Pino
@@ -32,6 +37,11 @@ src/
   scheduler/   будущий запуск периодических проверок поверх CronDriver
   index.ts     точка входа
 ```
+
+Фронт и бэк находятся в одном репозитории. Фронт нужен для управления
+настройками мониторинга: URL записи YCLIENTS, расписанием проверки, получателем
+Telegram и включением уведомлений. Playwright остается частью бэка и используется
+для автоматизации YCLIENTS.
 
 ## Конфигурация
 
@@ -48,7 +58,11 @@ cp .env.example .env
 ## Команды
 
 ```bash
-npm run dev           # запуск через tsx watch
-npm run build         # сборка в dist
-npm run start         # запуск собранной версии
+npm run dev           # запуск бэка через tsx watch
+npm run dev:frontend  # запуск фронта через Vite
+npm run build         # сборка бэка и фронта
+npm run build:backend # сборка бэка в dist
+npm run build:frontend # сборка фронта
+
+npm run start         # запуск бэка через tsx watch и фронта
 ```
