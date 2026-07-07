@@ -21,6 +21,7 @@ Use the smallest `old_string` that uniquely targets the change. To change two li
 - One-letter names are forbidden.
 - Unnecessary abbreviations are forbidden.
 - Applies to variables, arguments, properties, methods, classes, interfaces, types, enums, constants, files.
+- Shared URL literals live in `CONST.ts`.
 
 ## Rules
 
@@ -33,3 +34,7 @@ Architecture patterns are in `.codex/rules/architecture/patterns.md`. Read the r
 Project code rules are in `.codex/rules/code-review/overview.md` — that file indexes every rule. Read the relevant subfile before writing or modifying code in that area.
 
 Before finalizing TypeScript changes, re-read `.codex/rules/code-review/ts/common.md` and check every new method against `missed-this`.
+
+Interfaces must live next to the module that owns them in an `interface/` directory, with a barrel `interface.ts`, following `src/config/interface`.
+
+Each test may contain only one assertion. If behavior needs more checks, split them into separate tests. Repeated test constants belong at file scope or in `beforeEach` when they are reset per test.

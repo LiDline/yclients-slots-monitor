@@ -8,6 +8,7 @@ Read only the files relevant to what you are touching — do not load all of the
 
 - `ts/common.md` — general rules for all JS/TS code: naming, abbreviations, control flow, async/await, try/catch, ternaries, max line length, Demeter, throw rules.
 - `ts/interface.md` — interface naming (no `I` prefix).
+- `ts/test.md` — TypeScript test structure and assertion rules.
 
 ## When picking a pattern
 

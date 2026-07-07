@@ -104,6 +104,10 @@ File name equals the class name.
 - `fetchHttpDriver.ts` for `class FetchHttpDriver` — bad (lowercase first letter)
 - `FetchHttp.ts` for `class FetchHttpDriver` — bad (missing suffix)
 
+## shared-url-const
+
+Shared URL literals live in `CONST.ts`.
+
 ## split-try-catch
 
 Split a `try/catch` block into two methods: `tryAction` and `action`.
