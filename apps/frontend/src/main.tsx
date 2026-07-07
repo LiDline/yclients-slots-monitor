@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import { SettingsApplication } from './SettingsApplication.js';
+import { SettingsApplication } from './pages/SettingsApplication.js';
 import './index.css';
 
 const rootElement = document.getElementById('root');
