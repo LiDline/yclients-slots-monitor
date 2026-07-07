@@ -1,21 +1,7 @@
 import 'dotenv/config';
 
-import Joi from 'joi';
-
-import { CLIENTS_BOOKING_URL } from '../CONST.js';
-import type { AppConfig, RawEnv } from './interface/interface.js';
-
-const envSchema = Joi.object<RawEnv>({
-  NODE_ENV: Joi.string().valid('development', 'test', 'production').default('development'),
-  LOG_LEVEL: Joi.string()
-    .valid('fatal', 'error', 'warn', 'info', 'debug', 'trace', 'silent')
-    .default('info'),
-  TELEGRAM_BOT_TOKEN: Joi.string().allow('').default(''),
-  TELEGRAM_CHAT_ID: Joi.string().allow('').default(''),
-  YCLIENTS_BOOKING_URL: Joi.string().uri().allow('').empty('').default(CLIENTS_BOOKING_URL),
-  YCLIENTS_API_BASE_URL: Joi.string().uri().default('https://api.yclients.com'),
-  CHECK_CRON_EXPRESSION: Joi.string().default('*/5 * * * *'),
-}).unknown(true);
+import type { AppConfig } from './interface/interface.js';
+import { envSchema } from './schema/envSchema.js';
 
 export function loadConfig(env: NodeJS.ProcessEnv = process.env): AppConfig {
   const result = envSchema.validate(env, {
@@ -30,15 +16,13 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): AppConfig {
   const value = result.value;
 
   return {
-    nodeEnv: value.NODE_ENV,
-    logLevel: value.LOG_LEVEL,
+    nodeEnv: 'development',
     telegram: {
       botToken: value.TELEGRAM_BOT_TOKEN,
       chatId: value.TELEGRAM_CHAT_ID,
     },
     yclients: {
       bookingUrl: value.YCLIENTS_BOOKING_URL,
-      apiBaseUrl: value.YCLIENTS_API_BASE_URL,
     },
     scheduler: {
       checkCronExpression: value.CHECK_CRON_EXPRESSION,

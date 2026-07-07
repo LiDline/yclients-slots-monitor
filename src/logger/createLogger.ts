@@ -1,22 +1,16 @@
-import pino, { type Level, type Logger, type StreamEntry } from 'pino';
+import pino, { type Logger, type StreamEntry } from 'pino';
 
-import type { AppConfig } from '../config/interface/interface.js';
-
-export function createLogger(config: Pick<AppConfig, 'logLevel' | 'nodeEnv'>): Logger {
-  const streamLevel: Level = config.logLevel === 'silent' ? 'fatal' : config.logLevel;
+export function createLogger(): Logger {
   const streams: StreamEntry[] = [
     {
-      level: streamLevel,
-      stream:
-        config.nodeEnv === 'development'
-          ? pino.transport({
-              target: 'pino-pretty',
-              options: {
-                colorize: true,
-                translateTime: 'SYS:standard',
-              },
-            })
-          : process.stdout,
+      level: 'debug',
+      stream: pino.transport({
+        target: 'pino-pretty',
+        options: {
+          colorize: true,
+          translateTime: 'SYS:standard',
+        },
+      }),
     },
     {
       level: 'info',
@@ -30,7 +24,7 @@ export function createLogger(config: Pick<AppConfig, 'logLevel' | 'nodeEnv'>): L
 
   return pino(
     {
-      level: config.logLevel,
+      level: 'debug',
       base: null,
     },
     pino.multistream(streams),

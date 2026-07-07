@@ -42,7 +42,7 @@ src/
 cp .env.example .env
 ```
 
-`pino-pretty` используется только при `NODE_ENV=development`. Логи также пишутся в
+`pino-pretty` используется всегда. Логи также пишутся в
 `app.log` и `error.log` в корне проекта.
 
 ## Команды

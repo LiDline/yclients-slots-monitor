@@ -4,7 +4,7 @@ import { PlaywrightBrowserDriver } from './driver/browser/index.js';
 import { createLogger } from './logger/index.js';
 
 const config = loadConfig();
-const logger = createLogger(config);
+const logger = createLogger();
 const browserDriver = new PlaywrightBrowserDriver();
 const openedBookingPage = await openBookingPage({
   browserDriver,

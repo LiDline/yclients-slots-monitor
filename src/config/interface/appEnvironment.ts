@@ -1,1 +1,1 @@
-export type AppEnvironment = 'development' | 'test' | 'production';
+export type AppEnvironment = 'development';
