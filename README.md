@@ -12,7 +12,6 @@
 - Node.js 22+
 - TypeScript, ESM
 - Playwright
-- встроенный `fetch`
 - Telegraf
 - dotenv, Joi
 - Pino, pino-pretty
@@ -52,8 +51,4 @@ cp .env.example .env
 npm run dev           # запуск через tsx watch
 npm run build         # сборка в dist
 npm run start         # запуск собранной версии
-npm run typecheck     # проверка TypeScript без сборки
-npm run lint          # ESLint
-npm run format        # форматирование Prettier
-npm run format:check  # проверка форматирования
 ```

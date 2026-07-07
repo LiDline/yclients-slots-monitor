@@ -2,6 +2,7 @@ import 'dotenv/config';
 
 import Joi from 'joi';
 
+import { CLIENTS_BOOKING_URL } from '../CONST.js';
 import type { AppConfig, RawEnv } from './interface/interface.js';
 
 const envSchema = Joi.object<RawEnv>({
@@ -11,7 +12,7 @@ const envSchema = Joi.object<RawEnv>({
     .default('info'),
   TELEGRAM_BOT_TOKEN: Joi.string().allow('').default(''),
   TELEGRAM_CHAT_ID: Joi.string().allow('').default(''),
-  YCLIENTS_BOOKING_URL: Joi.string().uri().allow('').default(''),
+  YCLIENTS_BOOKING_URL: Joi.string().uri().allow('').empty('').default(CLIENTS_BOOKING_URL),
   YCLIENTS_API_BASE_URL: Joi.string().uri().default('https://api.yclients.com'),
   CHECK_CRON_EXPRESSION: Joi.string().default('*/5 * * * *'),
 }).unknown(true);
